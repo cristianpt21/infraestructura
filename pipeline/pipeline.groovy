@@ -1,11 +1,11 @@
 pipeline {
 
     environment {
-        BASE_GIT_URL = 'https://github.com/Alvaro1050'
-        APP_REPO_URL = "${env.BASE_GIT_URL}/${nombre_repo}.git"
-        INFRA_REPO_URL = "${env.BASE_GIT_URL}/Infraestructura.git"
-        DOCKER_IMAGE = "alejandro1050/${nombre_repo}"
-        DEPLOY_FOLDER = "deploy/kubernete/${nombre_repo}"
+        BASE_GIT_URL = 'https://github.com/cristianpt21'
+        APP_REPO_URL = "${env.BASE_GIT_URL}/${repo}.git"
+        INFRA_REPO_URL = "${env.BASE_GIT_URL}/infraestructura.git"
+        DOCKER_IMAGE = "alejandro1050/${repo}"
+        DEPLOY_FOLDER = "deploy/kubernete/${repo}"
     }
 
     agent any
@@ -40,7 +40,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('', 'alvarodocker') {
+                    docker.withRegistry('', 'cristiandocker') {
                     dockerImage.push()
                     }
                 }
@@ -53,11 +53,11 @@ pipeline {
                 sh "sed -i 's:TAG:${tag}:g' ${DEPLOY_FOLDER}/deployment.yaml"
                 
                 step([$class: 'KubernetesEngineBuilder', 
-                        projectId: "nice-root-288300",
-                        clusterName: "cluster-alvaro",
-                        zone: "us-central1-c",
+                        projectId: "airy-actor-288822",
+                        clusterName: "cluster-test",
+                        zone: "us-central1-a",
                         manifestPattern: "${DEPLOY_FOLDER}/",
-                        credentialsId: "seminario",
+                        credentialsId: "Project cristian",
                         verifyDeployments: true])
             }
         }
