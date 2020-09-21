@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: disco-alvaro
+    pdName: cluster-disk2
     fsType: ext4
 ---
 apiVersion: v1
