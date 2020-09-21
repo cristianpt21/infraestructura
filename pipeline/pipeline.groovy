@@ -40,7 +40,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('', 'cristiandocker') {
+                    docker.withRegistry('', 'dockercristian') {
                     dockerImage.push()
                     }
                 }
