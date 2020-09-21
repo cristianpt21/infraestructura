@@ -4,7 +4,7 @@ pipeline {
         BASE_GIT_URL = 'https://github.com/cristianpt21'
         APP_REPO_URL = "${env.BASE_GIT_URL}/${repo}.git"
         INFRA_REPO_URL = "${env.BASE_GIT_URL}/infraestructura.git"
-        DOCKER_IMAGE = "alejandro1050/${repo}"
+        DOCKER_IMAGE = "crisapt1/${repo}"
         DEPLOY_FOLDER = "deploy/kubernete/${repo}"
     }
 
@@ -57,7 +57,7 @@ pipeline {
                         clusterName: "cluster-test",
                         zone: "us-central1-a",
                         manifestPattern: "${DEPLOY_FOLDER}/",
-                        credentialsId: "Project cristian",
+                        credentialsId: "infraestructura",
                         verifyDeployments: true])
             }
         }
