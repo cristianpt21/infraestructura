@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: ingress-router
-        image: alejandro1050/nginx:1.2
+        image: crisapt1/nginx:v1
         ports:
         - name: http
           containerPort: 80

@@ -10,7 +10,7 @@ services:
       - data-db:/data/db
 
   backend:
-    image: backend
+    image: crisapt1/backend:v1
     ports: 
       - 8000:8000
     environment:
@@ -22,7 +22,7 @@ services:
         - mongo
   
   frontend:
-    image: frontend
+    image: crisapt1/frontend:v1
     ports: 
       - 3000:3000
     depends_on:
@@ -36,7 +36,3 @@ services:
         - frontend
 volumes: 
     data-db:
-
-
-
-  
